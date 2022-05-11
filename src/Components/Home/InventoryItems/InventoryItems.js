@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './InventoryItems.css'
 const InventoryItems = (props) => {
-    const { image, fruit, description, price } = props.fruit;
+    const { image, fruit, description, price, quantity, supplierName } = props.fruit;
     return (
         <div className='col-lg-4 d-flex col-md-6 justify-content-center mt-5 p-0'>
             <Card className='inventory-item' style={{ width: '18rem' }}>
@@ -14,10 +14,18 @@ const InventoryItems = (props) => {
                         {description}
                     </Card.Text>
                     <Card.Text>
+                        Supplier: <span style={{ color: 'goldenrod' }}>{supplierName}</span>
+
+                    </Card.Text>
+                    <Card.Text>
+                        Quantity: <span style={{ color: 'goldenrod' }}>{quantity}</span>
+
+                    </Card.Text>
+                    <Card.Text>
                         Price: <span style={{ color: 'goldenrod' }}>{price}</span>
 
                     </Card.Text>
-                    <Link className='btn' to='/checkout'>Check Out</Link>
+                    <Link className='btn' to='/checkout'> stock update</Link>
                 </Card.Body>
             </Card>
         </div>

@@ -1,0 +1,14 @@
+.other-cont {
+    border-left: 1px solid tomato;
+}
+
+.other-cont:last-child {
+    margin-left: 10%;
+    border-left: 1px solid rgb(255, 71, 240);
+}
+
+@media only screen and (max-width: 1000px) {
+    .other-cont:last-child {
+        margin-left: 3.5%;
+    }
+}

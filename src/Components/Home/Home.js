@@ -1,13 +1,14 @@
 import React from 'react';
-import useFruits from '../../hooks/useFruits';
+
 import Banner from './Banner/Banner';
+import Inventory from './Inventory/Inventory';
 
 const Home = () => {
-    const [fruits, setFruits] = useFruits();
+
     return (
         <div>
             <Banner></Banner>
-            <h1>{fruits?.length}</h1>
+            <Inventory></Inventory>
         </div>
     );
 };

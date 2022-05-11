@@ -1,0 +1,22 @@
+.Banner {
+    background-image: url('https://images.unsplash.com/photo-1515665966984-831e4cd20f96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZnJ1aXRzJTIwZGFya3xlbnwwfHwwfHw%3D&auto=format&fit=crop&q=60');
+    background-repeat: no-repeat;
+
+    background-size: 100%;
+    width: 100%;
+    height: 100vh;
+}
+
+.banner-text {
+    color: rgb(161, 152, 152);
+    padding-top: 35vh;
+    text-align: center;
+}
+
+@media only screen and (max-width: 720px) {
+    .banner-text {
+        padding-top: 10vh;
+        font-size: 20px;
+        color: white;
+    }
+}

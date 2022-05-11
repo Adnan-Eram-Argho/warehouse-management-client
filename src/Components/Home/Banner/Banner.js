@@ -3,8 +3,11 @@ import './Banner.css'
 const Banner = () => {
     return (
         <div>
-            <div>
-                <div><img src="https://images.unsplash.com/photo-1515665966984-831e4cd20f96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZnJ1aXRzJTIwZGFya3xlbnwwfHwwfHw%3D&auto=format&fit=crop&q=60" alt="" className='img-fluid w-100' /></div>
+            <div className='Banner'>
+                <div className='app banner-text'>
+                    <h1>Do you want to store your fruits or Buy Fruits?</h1>
+                    <p className='mt-3'>Then we are here for you</p>
+                </div>
             </div>
         </div>
     );

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = () => {
     return (
         <div >
-            <Navbar className='navigation' expand="lg" fixed="top" variant="light">
+            <Navbar className='navigation' expand="lg" fixed="top" variant="dark">
                 <Container >
-                    <Navbar.Brand as={Link} to="/" className="text-light">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/" className="text-light">Fruits Warehouse</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse >
                         <Nav className="me-auto">

@@ -18,12 +18,12 @@ const ContactUs = () => {
         }, 1);
     }
     return (
-        <div className='container'>
-            <div className='App'>
+        <div className='container mt-5'>
+            <div className='App '>
                 <h2>If you have any problem then contact us</h2>
             </div>
             <form action="https://postmail.invotes.com/send"
-                method="post" id="email_form" className='d-flex flex-column' >
+                method="post" id="email_form" className='d-flex flex-column mt-5' >
 
                 <input type="text" name="subject" title='plase give email so we can contact you' placeholder="Email" />
                 <textarea name="text" placeholder="Message"></textarea>
@@ -38,11 +38,11 @@ const ContactUs = () => {
 
 
 
-                <input id="submit_form" type="submit" value="Send" onClick={() => handleFromSubmit()} />
+                <input className='btn' id="submit_form" type="submit" value="Send" onClick={() => handleFromSubmit()} />
 
 
             </form>
-        </div>
+        </div >
     );
 };
 

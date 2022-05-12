@@ -18,7 +18,7 @@ const InventoryItems = (props) => {
 
                     </Card.Text>
                     <Card.Text>
-                        Quantity: <span style={{ color: 'goldenrod' }}>{quantity}</span>
+                        Quantity: <span style={{ color: 'goldenrod' }}>{quantity} kg</span>
 
                     </Card.Text>
                     <Card.Text>

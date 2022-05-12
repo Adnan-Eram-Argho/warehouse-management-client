@@ -21,7 +21,7 @@ const ManageInventories = () => {
                 }
             </div>
             <div className=' App mt-5'>
-                <Link to='/' className='btn'>Add new item</Link>
+                <Link to='/addnewitem' className='btn'>Add new item</Link>
             </div>
         </div>
     );

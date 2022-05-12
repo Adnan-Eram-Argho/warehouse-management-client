@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './InventoryRoute.css'
 const InventoryRoute = () => {
 
@@ -161,6 +161,9 @@ const InventoryRoute = () => {
 
                     <button type="submit" className='btn' >Add</button>
                 </form>
+            </div>
+            <div className='App mt-5'>
+                <Link className='btn' to='/manageinventories'> Manage Inventories</Link>
             </div>
         </div>
     );

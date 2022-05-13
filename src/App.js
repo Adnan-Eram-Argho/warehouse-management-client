@@ -12,8 +12,10 @@ import SignIn from './Components/SignIn/SignIn';
 import ManageInventories from './Components/ManageInventories/ManageInventories';
 import AddNewItem from './Components/AddNewItem/AddNewItem';
 import MyItems from './Components/MyItems/MyItems';
-
+import { ToastContainer } from 'react-toastify';
 function App() {
+
+  //https://stackoverflow.com/questions/72232381/typeerror-cant-assign-to-property-caninitemulator-on-emailgmail-com-not
   return (
     <div >
       <Header></Header>
@@ -27,12 +29,23 @@ function App() {
         <Route path='/login' element={<SignIn></SignIn>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
-        <Route path='/manageinventories' element={<ManageInventories></ManageInventories>}></Route>
-        <Route path='/addnewitem' element={<AddNewItem></AddNewItem>}></Route>
-        <Route path='myitems/:email' element={<MyItems></MyItems>}></Route>
+        <Route path='/manageinventories' element={
+          <RequireAuth>
+            <ManageInventories></ManageInventories>
+          </RequireAuth>}></Route>
+        <Route path='/addnewitem' element={
+          <RequireAuth>
+            <AddNewItem></AddNewItem>
+          </RequireAuth>
+        }></Route>
+        <Route path='myitems/:email' element={
+          <RequireAuth>
+            <MyItems></MyItems>
+          </RequireAuth>}></Route>
       </Routes>
 
       <Footer></Footer>
+
     </div>
   );
 }

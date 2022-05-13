@@ -1,32 +1,46 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './SignUp.css';
 
 const SignUp = () => {
     let navigate = useNavigate();
     let location = useLocation();
+
     let from = location?.state?.from?.pathname || "/";
+
+    const notify = () => {
+        toast("varification email sent")
+    }
+
     //creating user with email and pass
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     //signing in with google
     const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
 
     //react form
     const { register, handleSubmit, formState: { errors } } = useForm();
+    //submit
     const onSubmit = async (data) => {
+        notify();
         console.log(data.Email)
         createUserWithEmailAndPassword(data.Email, data.Password)
+
+
     };
-    console.log(errors.Email);
+    // console.log(errors.Email);
+
+
 
     //error handeling
     let errorElement;
@@ -36,23 +50,25 @@ const SignUp = () => {
         </div>
     }
     if (error || error1) {
-        console.log(error?.messege || error1?.message)
+
         errorElement = <div>
             <p className='text-danger'> {error?.message}</p>
         </div>
     }
 
     //handle loading
-    if (loading || loading1) {
+    if (loading1) {
         return <Loading></Loading>
     }
-    if (user || user1) {
-        navigate(from, { replace: true })
-    }
+
+
     //handle google sign in
     const handleGoogleSignIn = () => {
         signInWithGoogle();
         console.log(user)
+    }
+    if (user || user1) {
+        navigate(from, { replace: true })
     }
     return (
         <div className="container mt-5 ">
@@ -77,7 +93,7 @@ const SignUp = () => {
                         </div>
                     </div>
 
-                    <button className="btn mt-3" onClick={handleGoogleSignIn}>Google</button>
+                    <button className="btn mt-3" onClick={handleGoogleSignIn} >Google</button>
                     <br />
 
                 </form>
@@ -90,6 +106,8 @@ const SignUp = () => {
             <div className='App mt-5'>
                 <p>Already Have An Account? <Link to='/login'>login</Link></p>
             </div>
+
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

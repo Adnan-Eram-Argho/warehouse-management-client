@@ -1,15 +1,18 @@
 
-import React from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+
+import React, { useState } from 'react';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const SignIn = () => {
     let navigate = useNavigate();
     let location = useLocation();
     let from = location?.state?.from?.pathname || "/";
+    const [email, setEmail] = useState('');
     //signIn with email and pass
     const [
         signInWithEmailAndPassword,
@@ -17,8 +20,13 @@ const SignIn = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    //password reset email
+    const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(
+        auth
+    );
     //react form
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const onSubmit = async (data) => {
         console.log(data.Email)
         signInWithEmailAndPassword(data.Email, data.Password)
@@ -34,8 +42,8 @@ const SignIn = () => {
             <p className='text-danger'> please write a valid email</p>
         </div>
     }
-    if (error || error1) {
-        console.log(error?.messege || error1?.message)
+    if (error || error1 || error2) {
+        console.log(error?.messege || error2?.message)
         errorElement = <div>
             <p className='text-danger'> {error?.message}</p>
         </div>
@@ -53,13 +61,30 @@ const SignIn = () => {
         signInWithGoogle();
         console.log(user)
     }
+    //getting email
+    const handleEmail = e => {
+        console.log(e.target.value)
+        setEmail(e.target.value)
+    }
+
+    //handle reset
+
+    const handleReset = async () => {
+        console.log(email)
+
+        await sendPasswordResetEmail(email);
+        toast("reset password email send")
+
+    }
+
+
     return (
         <div className="container mt-5 ">
 
             <div className='d-flex flex-column align-items-center '>
                 <h1>This is sign In</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="sign-form mt-5">
-                    <input type="text" placeholder="Email" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} className="mt-2" required />
+                    <input type="text" placeholder="Email" {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} className="mt-2" required onBlur={handleEmail} />
                     <input type="password" placeholder="Password" {...register("Password", {})} className="mt-2" required />
 
                     <button type="submit" className="btn mt-2" >Sign In</button>
@@ -80,6 +105,11 @@ const SignIn = () => {
                     <br />
 
                 </form>
+                <button className='btn mt-3'
+                    onClick={handleReset}
+                >
+                    Reset password
+                </button>
             </div>
 
 
@@ -89,7 +119,8 @@ const SignIn = () => {
             <div className='App mt-5'>
                 <p>Wanna sign up? <Link to='/signup'>Sign Up</Link></p>
             </div>
-        </div>
+            <ToastContainer></ToastContainer>
+        </div >
     );
 };
 

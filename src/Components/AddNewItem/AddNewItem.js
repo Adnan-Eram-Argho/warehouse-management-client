@@ -1,10 +1,14 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const AddNewItem = () => {
     const [user] = useAuthState(auth)
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location?.state?.from?.pathname || "/";
 
     //add new item
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -36,6 +40,7 @@ const AddNewItem = () => {
         if (done) {
             window.location.reload(true)
         }
+        navigate(from, { replace: true })
     };
     console.log(errors);
     return (

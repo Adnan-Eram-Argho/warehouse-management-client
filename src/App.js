@@ -13,7 +13,7 @@ import ManageInventories from './Components/ManageInventories/ManageInventories'
 import AddNewItem from './Components/AddNewItem/AddNewItem';
 import MyItems from './Components/MyItems/MyItems';
 import Blogs from './Components/Blogs/Blogs'
-import { ToastContainer } from 'react-toastify';
+
 function App() {
 
   //https://stackoverflow.com/questions/72232381/typeerror-cant-assign-to-property-caninitemulator-on-emailgmail-com-not

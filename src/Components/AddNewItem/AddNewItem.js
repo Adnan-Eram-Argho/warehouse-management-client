@@ -1,7 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import auth from '../../firebase.init';
 
 const AddNewItem = () => {
+    const [user] = useAuthState(auth)
+
+    //add new item
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
@@ -12,7 +17,8 @@ const AddNewItem = () => {
             price: data?.price,
             quantity: data.quantity,
             supplierName: data?.supplierName,
-            sold: data?.sold
+            sold: data?.sold,
+            email: user?.email
         }
         console.log(newFruit)
 
@@ -26,6 +32,10 @@ const AddNewItem = () => {
             .then((response) => response.json())
             .then((json) => console.log(json));
 
+        const done = window.confirm('adding done')
+        if (done) {
+            window.location.reload(true)
+        }
     };
     console.log(errors);
     return (
@@ -39,6 +49,7 @@ const AddNewItem = () => {
                     <input type="text" placeholder="quantity" {...register("quantity", {})} className="mt-2" />
                     <input type="text" placeholder="supplierName" {...register("supplierName", {})} className="mt-2" />
                     <input type="text" placeholder="sold" {...register("sold", {})} className="mt-2" />
+
 
                     <input type="submit" className='btn mt-3' />
                 </form>

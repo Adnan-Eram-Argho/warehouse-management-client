@@ -8,6 +8,8 @@ import './Header.css'
 
 const Header = () => {
     const [user] = useAuthState(auth);
+    const email = user?.email;
+    const url = `myitems/${email}`
     const handleSignOut = () => {
         signOut(auth)
     }
@@ -22,8 +24,18 @@ const Header = () => {
 
                         </Nav>
                         <Nav >
-                            <Nav.Link href="#home" className="text-light">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/" className="text-light">Home</Nav.Link>
                             <Nav.Link href="#link" className="text-light">Link</Nav.Link>
+
+                            {
+                                user ? <Nav.Link as={Link} to="/manageinventories" className="text-light"> Manage Items</Nav.Link> : ''
+                            }
+                            {
+                                user ? <Nav.Link as={Link} to="/addnewitem" className="text-light">Add Item</Nav.Link> : ''
+                            }
+                            {
+                                user ? <Nav.Link as={Link} to={url} className="text-light">My items</Nav.Link> : ''
+                            }
                             {
                                 user ? <button className='btn' onClick={handleSignOut}>Sign Out</button> : <Nav.Link as={Link} to="/signup">Sign up</Nav.Link>
                             }

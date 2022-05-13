@@ -12,16 +12,18 @@ const Inventory = () => {
     }
 
     return (
-        <div>
+        <div >
 
             <div className='App'>
                 <h1>Inventory</h1>
             </div>
-            <div className='row '>
-                {
-                    allfruit?.map(fruit => <InventoryItems key={fruit._id}
-                        fruit={fruit}></InventoryItems>)
-                }
+            <div className='d-flex align-items-center justify-content-center'>
+                <div className='row container'>
+                    {
+                        allfruit?.map(fruit => <InventoryItems key={fruit._id}
+                            fruit={fruit}></InventoryItems>)
+                    }
+                </div>
             </div>
             <div className='App mt-5'>
                 <Link className='btn' to='/manageinventories'> Manage Inventories</Link>

@@ -9,7 +9,7 @@ const ManageInventory = (props) => {
         const allow = window.confirm("are you sure you wanna delete this item");
         if (allow) {
             console.log("deleting", fruit);
-            const url = ` http://localhost:5000/fruits/${_id}`;
+            const url = ` https://boiling-atoll-49170.herokuapp.com/fruits/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })

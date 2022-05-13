@@ -7,7 +7,7 @@ const MyItems = () => {
 
     const [fruit, setFruit] = useState([]);
     const { email } = useParams();
-    const url = `http://localhost:5000/fruit/${email}`
+    const url = `https://boiling-atoll-49170.herokuapp.com/fruit/${email}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -23,11 +23,13 @@ const MyItems = () => {
                 <h1>hello {email} </h1>
                 <p>These are your added items</p>
             </div>
-            <div className='row '>
-                {
-                    fruit?.map(fruit => <ManageInventory key={fruit._id}
-                        fruit={fruit}></ManageInventory>)
-                }
+            <div className='d-flex align-items-center justify-content-center'>
+                <div className='row container'>
+                    {
+                        fruit?.map(fruit => <ManageInventory key={fruit._id}
+                            fruit={fruit}></ManageInventory>)
+                    }
+                </div>
             </div>
         </div>
     );

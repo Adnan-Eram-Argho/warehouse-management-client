@@ -9,7 +9,7 @@ const InventoryRoute = () => {
     const { id } = useParams();
 
     const [fruit, setFruit] = useState();
-    const url = `http://localhost:5000/fruits/${id}`
+    const url = `https://boiling-atoll-49170.herokuapp.com/fruits/${id}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())

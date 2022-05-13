@@ -11,14 +11,16 @@ const ManageInventories = () => {
 
     return (
         <div>
-            <div className='App mt-5'>
+            <div className='App mt-5 '>
                 <h1>Inventory</h1>
             </div>
-            <div className='row '>
-                {
-                    fruits?.map(fruit => <ManageInventory key={fruit._id}
-                        fruit={fruit}></ManageInventory>)
-                }
+            <div className='d-flex align-items-center justify-content-center'>
+                <div className='row container'>
+                    {
+                        fruits?.map(fruit => <ManageInventory key={fruit._id}
+                            fruit={fruit}></ManageInventory>)
+                    }
+                </div>
             </div>
             <div className=' App mt-5'>
                 <Link to='/addnewitem' className='btn'>Add new item</Link>

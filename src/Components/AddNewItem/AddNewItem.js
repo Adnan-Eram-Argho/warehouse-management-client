@@ -26,7 +26,7 @@ const AddNewItem = () => {
         }
         console.log(newFruit)
 
-        fetch('http://localhost:5000/fruits/', {
+        fetch('https://boiling-atoll-49170.herokuapp.com/fruits/', {
             method: 'POST',
             body: JSON.stringify(newFruit),
             headers: {

@@ -14,8 +14,8 @@ const Header = () => {
         signOut(auth)
     }
     return (
-        <div >
-            <Navbar className='navigation' expand="lg" fixed="top" variant="dark">
+        <div  >
+            <Navbar className='navigation ' expand="lg" fixed="top" variant="dark">
                 <Container >
                     <Navbar.Brand as={Link} to="/" className="text-light">Fruits Warehouse</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -25,7 +25,8 @@ const Header = () => {
                         </Nav>
                         <Nav >
                             <Nav.Link as={Link} to="/" className="text-light">Home</Nav.Link>
-                            <Nav.Link href="#link" className="text-light">Link</Nav.Link>
+                            <Nav.Link as={Link} to="/blogs" className="text-light">blogs</Nav.Link>
+
 
                             {
                                 user ? <Nav.Link as={Link} to="/manageinventories" className="text-light"> Manage Items</Nav.Link> : ''

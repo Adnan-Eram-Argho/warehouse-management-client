@@ -12,6 +12,7 @@ import SignIn from './Components/SignIn/SignIn';
 import ManageInventories from './Components/ManageInventories/ManageInventories';
 import AddNewItem from './Components/AddNewItem/AddNewItem';
 import MyItems from './Components/MyItems/MyItems';
+import Blogs from './Components/Blogs/Blogs'
 import { ToastContainer } from 'react-toastify';
 function App() {
 
@@ -41,7 +42,9 @@ function App() {
         <Route path='myitems/:email' element={
           <RequireAuth>
             <MyItems></MyItems>
-          </RequireAuth>}></Route>
+          </RequireAuth>}>
+        </Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
       </Routes>
 
       <Footer></Footer>

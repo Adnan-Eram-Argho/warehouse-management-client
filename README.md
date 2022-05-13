@@ -8,5 +8,5 @@
  * i have used react firebase hooks and bootstrap
  * user can add and delete fruits from here
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+project live link[Warehouse](https://splendorous-travesseiro-224117.netlify.app/).
 

@@ -52,7 +52,7 @@ const SignUp = () => {
     if (error || error1) {
 
         errorElement = <div>
-            <p className='text-danger'> {error?.message}</p>
+            <p className='text-danger'> {error1?.message || error?.message}</p>
         </div>
     }
 
@@ -65,7 +65,7 @@ const SignUp = () => {
     //handle google sign in
     const handleGoogleSignIn = () => {
         signInWithGoogle();
-        console.log(user)
+        console.log(user1)
     }
     if (user || user1) {
         navigate(from, { replace: true })

@@ -45,7 +45,7 @@ const SignIn = () => {
     if (error || error1 || error2) {
         console.log(error?.messege || error2?.message || error1?.massege)
         errorElement = <div>
-            <p className='text-danger'> {error?.message}</p>
+            <p className='text-danger'> {error1?.message || error?.message || error2.message}</p>
         </div>
     }
     //handle loading
